@@ -1,15 +1,18 @@
 "use client";
 
 import React, { createRef, FC, useState } from "react";
-import Logo from "@/shared/Logo/Logo";
+// import Logo from "@/shared/Logo/Logo";
 import MenuBar from "@/shared/MenuBar/MenuBar";
 import AvatarDropdown from "./AvatarDropdown";
 import Navigation from "@/shared/Navigation/Navigation";
-import CartDropdown from "./CartDropdown";
+// import CartDropdown from "./CartDropdown";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+// import { Silkscreen } from "next/font/google";
+// import Link from "next/link";
+import WebLogo from "../WebLogo";
+export interface MainNav2LoggedProps { }
 
-export interface MainNav2LoggedProps {}
 
 const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
   const inputRef = createRef<HTMLInputElement>();
@@ -71,15 +74,17 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
     );
   };
 
+
   const renderContent = () => {
+
+
     return (
       <div className="h-20 flex justify-between">
         <div className="flex items-center lg:hidden flex-1">
           <MenuBar />
         </div>
-
-        <div className="lg:flex-1 flex items-center">
-          <Logo className="flex-shrink-0" />
+        <div className="flex items-center align-bottom">
+          <WebLogo />
         </div>
 
         <div className="flex-[2] hidden lg:flex justify-center mx-4">

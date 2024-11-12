@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes text-draw {
+    0% {
+      stroke-dasharray: 0 600;
+      opacity: 0;
+      fill: transparent;
+      /* stroke-width: 3; */
+    }
+    70% {
+      stroke-width: 2;
+    }
+    80% {
+      stroke-dasharray: 400 0;
+      fill: chocolate;
+      stroke-width: 0.1;
+      /* text-decoration: underline; */
+    }
+    100% {
+      stroke-dasharray: 600 0;
+      opacity: 1;
+      fill: chocolate;
+      stroke-width: 0;
+      /* text-decoration: none; */
+    }
+  }
+  
+  .animate-text-draw {
+    animation: text-draw 5s ease-in-out forwards;
+    /* animation: underlineAnimation 5s ease-in-out infinite; */
+  }
+  
