@@ -4,7 +4,7 @@ import { EVENT_DATA_TYPE } from '../../../../lib/scraper';
 
 
 //inster event to the database if id is same then update the event
-export async function insertEvent(event: EVENT_DATA_TYPE): Promise<void> {
+async function insertEvent(event: EVENT_DATA_TYPE): Promise<void> {
     // console.log('Start: Inserting event to database:');
     const db = await getDb();
     // console.log('db connected');
