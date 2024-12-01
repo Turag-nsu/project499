@@ -69,6 +69,7 @@ export type EVENT_DATA_TYPE = {
   startTimestamp?: number;
   endTimestamp?: number; // Updated type to match expected `undefined`
   formatedTimestamp?: string;
+  formattedDate?: string; // Updated type to match expected `undefined`
   timezone?: string;
   onlineDetails?: any;
   hosts?: {
