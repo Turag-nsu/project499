@@ -1,74 +1,95 @@
 import React, { FC } from "react";
-import NcImage from "@/shared/NcImage/NcImage";
-import explore1Svg from "@/images/collections/explore1.svg";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+import { EVENT_DATA_TYPE } from "../../../lib/scraper";
 
-export interface CardCategory4Props {
+export interface EventCardProps {
+  event: EVENT_DATA_TYPE
   className?: string;
-  featuredImage?: StaticImageData | string;
-  bgSVG?: string;
-  name: string;
-  desc: string;
-  color?: string;
-  count?: number;
 }
 
-const CardCategory4: FC<CardCategory4Props> = ({
-  className = "",
-  featuredImage = ".",
-  bgSVG = explore1Svg,
-  name,
-  desc,
-  color = "bg-rose-50",
-  count,
-}) => {
+const CardCategory4: FC<EventCardProps> = ({ event, className = "" }) => {
+  
+    const name="Microbiology Olympiad 2024"
+    const description="The International Biology Olympiad (IBO) is a science Olympiad for high school students under the age of 20. The first academic international Olympiads after the International Mathematical Olympiad were launched under the auspices of UNESCO in the 1960s. The first IBO was held in Olomouc, Czechoslovakia, in 1990."
+    const photo={imageUri:"https://scontent.fdac14-1.fna.fbcdn.net/v/t39.30808-6/462478132_962256382610795_6026693621998278038_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=fPKL1YDDD_MQ7kNvgHk5KbD&_nc_zt=23&_nc_ht=scontent.fdac14-1.fna&_nc_gid=AmhHgsj8XfQ1P6NxvfwDgyK&oh=00_AYADKB_DGSPcQdwkqbli5FPigacUdVSpuGrGz2LY_PsbNg&oe=6752597B"}
+    const isOnline=false
+    const formattedDate="Monday 2 December 2024 at 09:30 +06"
+    const ticketUrl="https://forms.gle/LxQDNrE8Mxbs1WN38"
+    const id = "1235540631072966"
+  
+
   return (
     <div
-      className={`nc-CardCategory4 relative w-full aspect-w-12 aspect-h-11 h-0 rounded-3xl overflow-hidden bg-white dark:bg-neutral-900 group hover:nc-shadow-lg transition-shadow ${className}`}
+      className={`nc-EventCard relative w-full aspect-w-12 aspect-h-11 h-0 rounded-3xl overflow-hidden bg-white dark:bg-neutral-900 group hover:nc-shadow-lg transition-shadow ${className}`}
     >
-      <div>
-        <div className="absolute bottom-0 right-0 max-w-[280px] opacity-80">
-          <Image src={bgSVG} alt="" />
-        </div>
-
-        <div className="absolute inset-5 sm:inset-8 flex flex-col justify-between">
-          <div className="flex justify-between items-center">
-            <NcImage
-              alt=""
-              src={featuredImage}
-              containerClassName={`w-20 h-20 rounded-full overflow-hidden z-0 ${color}`}
-              width={80}
-              height={80}
+      <div className=" flex flex-col justify-between">
+        {/* Event Image */}
+        {photo?.imageUri && (
+          <div className="relative w-full h-56 overflow-hidden rounded-xl">
+            <Image
+              src={photo.imageUri}
+              alt={name}
+              className="w-full h-full object-cover"
+              layout="fill"
+              priority
             />
-            <span className="text-xs text-slate-700 dark:text-neutral-300 font-medium">
-              {count} products
-            </span>
           </div>
+        )}
 
-          <div className="">
+        {/* Event Information */}
+        <div className="flex flex-col justify-between space-y-4 p-4">
+          <div className="flex justify-between items-center">
             <span
-              className={`block mb-2 text-sm text-slate-500 dark:text-slate-400`}
+              className={`text-xs font-medium ${
+                isOnline ? "text-green-600" : "text-blue-600"
+              }`}
             >
-              {desc}
+              {isOnline ? "Online Event" : "Offline Event"}
             </span>
-            <h2 className={`text-2xl sm:text-3xl font-semibold`}>{name}</h2>
+            <span className="text-sm text-slate-700 dark:text-neutral-300 font-medium text-wrap">
+              {formattedDate?.slice(0, -3)}
+            </span>
           </div>
 
-          <Link
-            href={"/collection"}
-            className="flex items-center text-sm font-medium group-hover:text-primary-500 transition-colors"
-          >
-            <span>See Collection</span>
-            <ArrowRightIcon className="w-4 h-4 ml-2.5" />
-          </Link>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-white">
+              {name}
+            </h2>
+            {/* <p className="text-sm text-slate-500 dark:text-slate-400">{description.slice(0,100)}...</p> */}
+          </div>
+
+          <div className="flex justify-between items-center mt-4">
+            {/* <Link href={`/events/${id}`} passHref>
+              <a className="text-sm font-medium flex items-center text-blue-500 hover:text-blue-700">
+                <span>Learn More</span>
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </a>
+            </Link> */}
+            <Link href={`/events/${id}`} passHref>
+              <span className="text-sm font-medium flex items-center text-blue-500 hover:text-blue-700">
+                <span>Learn More</span>
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </span>
+            </Link>
+            {ticketUrl && (
+              <a
+                href={ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-blue-500 hover:text-blue-700"
+              >
+                Buy Tickets
+              </a>
+            )}
+          </div>
         </div>
       </div>
-
-      <Link href={"/collection"}></Link>
     </div>
   );
 };
+
+// export default EventCard;
 
 export default CardCategory4;
