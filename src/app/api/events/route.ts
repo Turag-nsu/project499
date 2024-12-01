@@ -2,16 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '../../../../lib/db';
 import { EVENT_DATA_TYPE } from '../../../../lib/scraper';
 
-//get event by id
-export async function getEventById(id: string): Promise<EVENT_DATA_TYPE | null> {
-    const db = await getDb();
-    const collection = db.collection('events');
-    const data = await collection.findOne({ id });
-    if (!data) {
-        return null;
-    }
-    return data as unknown as EVENT_DATA_TYPE;
-}
 
 //inster event to the database if id is same then update the event
 export async function insertEvent(event: EVENT_DATA_TYPE): Promise<void> {
