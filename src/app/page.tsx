@@ -18,6 +18,7 @@ import SectionGridFeatureItems from "@/components/SectionGridFeatureItems";
 import SectionMagazine5 from "@/app/blog/SectionMagazine5";
 
 function PageHome() {
+  
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <SectionHero2 />
