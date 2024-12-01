@@ -40,9 +40,9 @@ export const getDb = async () => {
     throw new Error('Missing MongoDB database name in environment variables.');
   }
 
-  // console.log('Getting client');
+  console.log('Getting client');
   const client = await getClient();
-  // console.log('Returning database');
+  console.log('Returning database');
   return client.db("eventhub");
 };
 
