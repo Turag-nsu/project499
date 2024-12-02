@@ -11,13 +11,7 @@ export interface EventCardProps {
 
 const CardCategory4: FC<EventCardProps> = ({ event, className = "" }) => {
   
-    const name="Microbiology Olympiad 2024"
-    const description="The International Biology Olympiad (IBO) is a science Olympiad for high school students under the age of 20. The first academic international Olympiads after the International Mathematical Olympiad were launched under the auspices of UNESCO in the 1960s. The first IBO was held in Olomouc, Czechoslovakia, in 1990."
-    const photo={imageUri:"https://scontent.fdac14-1.fna.fbcdn.net/v/t39.30808-6/462478132_962256382610795_6026693621998278038_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=fPKL1YDDD_MQ7kNvgHk5KbD&_nc_zt=23&_nc_ht=scontent.fdac14-1.fna&_nc_gid=AmhHgsj8XfQ1P6NxvfwDgyK&oh=00_AYADKB_DGSPcQdwkqbli5FPigacUdVSpuGrGz2LY_PsbNg&oe=6752597B"}
-    const isOnline=false
-    const formattedDate="Monday 2 December 2024 at 09:30 +06"
-    const ticketUrl="https://forms.gle/LxQDNrE8Mxbs1WN38"
-    const id = "1235540631072966"
+  const { name, photo, isOnline, formattedDate, ticketUrl } = event;
   
 
   return (
@@ -67,7 +61,7 @@ const CardCategory4: FC<EventCardProps> = ({ event, className = "" }) => {
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </a>
             </Link> */}
-            <Link href={`/events/${id}`} passHref>
+            <Link href={`/events/${event.id}`} passHref>
               <span className="text-sm font-medium flex items-center text-blue-500 hover:text-blue-700">
                 <span>Learn More</span>
                 <ArrowRightIcon className="w-4 h-4 ml-2" />

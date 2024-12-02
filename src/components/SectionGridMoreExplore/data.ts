@@ -18,6 +18,7 @@ import explore6Png from "@/images/collections/explore6.png";
 import explore7Png from "@/images/collections/explore7.png";
 import explore8Png from "@/images/collections/explore8.png";
 import explore9Png from "@/images/collections/explore9.png";
+import { EVENT_DATA_TYPE } from "../../../lib/scraper";
 
 export interface ExploreType {
   id: number;
@@ -27,6 +28,7 @@ export interface ExploreType {
   svgBg: string;
   color?: string;
   count?: number;
+  event?: EVENT_DATA_TYPE;
 }
 
 export const DEMO_MORE_EXPLORE_DATA_2: ExploreType[] = [
