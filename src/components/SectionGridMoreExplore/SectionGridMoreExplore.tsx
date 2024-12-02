@@ -4,6 +4,8 @@ import CardCategory4 from "@/components/CardCategories/CardCategory4";
 import Heading from "@/components/Heading/Heading";
 
 import { EVENT_DATA_TYPE } from "../../../lib/scraper";
+import ButtonSecondary from "@/shared/Button/ButtonSecondary";
+import Link from "next/link";
 export interface SectionGridMoreExploreProps {
   className?: string;
   gridClassName?: string;
@@ -41,7 +43,7 @@ const SectionGridMoreExplore: FC<SectionGridMoreExploreProps> = async ({
           isCenter
           desc=""
         >
-          Upcomming
+          Upcoming Events in Dhaka
         </Heading>
         
       </div>
@@ -53,6 +55,14 @@ const SectionGridMoreExplore: FC<SectionGridMoreExploreProps> = async ({
       {renderHeading()}
       <div className={`grid gap-4 md:gap-7 ${gridClassName}`}>
         {data && data.map((item) => <CardCategory4 key={item.id} event={item} className={boxCard} />)}
+      </div>
+      {/* load more eventsbutton */}
+      <div className="flex justify-center mt-12">
+        {/* <button className="nc-ButtonLoadMore">Load More Events</button> */}
+        <Link href={`/events`} passHref>
+        <ButtonSecondary
+          className="nc-ButtonLoadMore">Show All Events</ButtonSecondary>
+        </Link>
       </div>
     </div>
   );

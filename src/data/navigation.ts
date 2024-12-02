@@ -180,24 +180,29 @@ const OTHER_PAGE_CHILD: NavItemType[] = [
 export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "/collection",
+    href: "/events",
     name: "Concerts",
   },
   {
     id: ncNanoId(),
-    href: "/collection-2",
+    href: "/events",
     name: "Seminars",
   },
   {
     id: ncNanoId(),
-    href: "/collection",
+    href: "/events",
     name: "Fair",
   },
 
   {
     id: ncNanoId(),
-    href: "/collection-2",
+    href: "/events",
     name: "Sport",
+  },
+  {
+    id: ncNanoId(),
+    href: "/announcement",
+    name: "Announcements",
   },
   // {
   //   id: ncNanoId(),

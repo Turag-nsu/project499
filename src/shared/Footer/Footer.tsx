@@ -1,97 +1,79 @@
-import Logo from "@/shared/Logo/Logo";
-import SocialsList1 from "@/shared/SocialsList1/SocialsList1";
-import { CustomLink } from "@/data/types";
-import React from "react";
 import WebLogo from "@/components/WebLogo";
+import Image from "next/image";
+import React from "react";
+import dev1 from "@/images/dev-1.jpg";
+import dev2 from "@/images/dev-2.jpg";
+import dev3 from "@/images/dev-3.jpg";
 
-export interface WidgetFooterMenu {
-  id: string;
-  title: string;
-  menus: CustomLink[];
-}
 
-const widgetMenus: WidgetFooterMenu[] = [
+const developers = [
   {
-    id: "5",
-    title: "Getting started",
-    menus: [
-      { href: "/", label: "Release Notes" },
-      { href: "/", label: "Upgrade Guide" },
-      { href: "/", label: "Browser Support" },
-      { href: "/", label: "Dark Mode" },
-    ],
+    name: "Md. Abdullah Al Noman Turag",
+    photo: dev1,
+    profileUrl: "https://github.com/Turag-nsu",
   },
   {
-    id: "1",
-    title: "Explore",
-    menus: [
-      { href: "/", label: "Prototyping" },
-      { href: "/", label: "Design systems" },
-      { href: "/", label: "Pricing" },
-      { href: "/", label: "Security" },
-    ],
+    name: "Abdulla Al Nayem",
+    photo: dev2,
+    profileUrl: "https://github.com/nayem012",
   },
   {
-    id: "2",
-    title: "Resources",
-    menus: [
-      { href: "/", label: "Best practices" },
-      { href: "/", label: "Support" },
-      { href: "/", label: "Developers" },
-      { href: "/", label: "Learn design" },
-    ],
-  },
-  {
-    id: "4",
-    title: "Community",
-    menus: [
-      { href: "/", label: "Discussion Forums" },
-      { href: "/", label: "Code of Conduct" },
-      { href: "/", label: "Contributing" },
-      { href: "/", label: "API Reference" },
-    ],
+    name: "Prithi Zaglul",
+    photo: dev3,
+    profileUrl: "https://github.com/developer3",
   },
 ];
 
 const Footer: React.FC = () => {
-  const renderWidgetMenuItem = (menu: WidgetFooterMenu, index: number) => {
-    return (
-      <div key={index} className="text-sm">
-        <h2 className="font-semibold text-neutral-700 dark:text-neutral-200">
-          {menu.title}
-        </h2>
-        <ul className="mt-5 space-y-4">
-          {menu.menus.map((item, index) => (
-            <li key={index}>
-              <a
-                key={index}
-                className="text-neutral-6000 dark:text-neutral-300 hover:text-black dark:hover:text-white"
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-
   return (
     <div className="nc-Footer relative py-20 lg:pt-28 lg:pb-24 border-t border-neutral-200 dark:border-neutral-700">
-      <div className="container grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-x-10 ">
-        <div className="grid grid-cols-4 gap-5 col-span-2 md:col-span-4 lg:md:col-span-1 lg:flex lg:flex-col">
-          <div className="col-span-2 md:col-span-1">
-            {/* <Logo /> */}
-            <WebLogo />
-          </div>
-          <div className="col-span-2 flex items-center md:col-span-3">
-            <SocialsList1 className="flex items-center space-x-2 lg:space-x-0 lg:flex-col lg:space-y-3 lg:items-start" />
+      <div className="container grid grid-cols-1 gap-10 lg:grid-cols-2">
+        {/* Logo and Website Description */}
+        <div>
+          <WebLogo />
+          <p className="mt-5 text-sm text-neutral-600 dark:text-neutral-300">
+            This website is for research purposes and is being developed as a
+            project. It will evolve into a business platform in the future.
+          </p>
+        </div>
+
+        {/* Developer Profiles */}
+        <div>
+          <h2 className="text-xl font-semibold text-neutral-700 dark:text-neutral-200 mb-5">
+            Developers
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {developers.map((dev, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center space-x-4"
+              >
+                {dev.photo && (
+                  <Image
+                    src={dev.photo}
+                    alt={dev.name}
+                    width={50}
+                    height={50}
+                    className="rounded-full object-cover"
+                  />
+                )}
+                <div>
+                  <p className="font-medium text-neutral-700 dark:text-neutral-200">
+                    {dev.name}
+                  </p>
+                  <a
+                    href={dev.profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 text-sm"
+                  >
+                    View Profile
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        {widgetMenus.map(renderWidgetMenuItem)}
       </div>
     </div>
   );
